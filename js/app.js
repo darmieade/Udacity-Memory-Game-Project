@@ -17,6 +17,7 @@ window.onload = resetGame;
  const moves = document.querySelector('.moves');
  const showModal = document.getElementById('results');
  
+ //Declares and initializes variables need to flip cards, match them and countplay
  let flippedCard = false;
  let firstCard = "";
  let secondCard = "";
@@ -27,8 +28,6 @@ window.onload = resetGame;
  let beginTimer = 0;
  let endTime = "";
  let collectLastRating = "";
-
- //cardCounter += 1;
 
  //Create Timer
  let ms = 0, s = 0, m = 0, h = 0, t;
