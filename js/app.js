@@ -1,31 +1,9 @@
-/*
- * Create a list that holds all of your cards
- */
-
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
-
- /*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
-
+//Reshuffles game when window loads
 window.onload = resetGame;
 
-//Cards variable, holds the list of all the cards
- let cards = document.querySelectorAll("li.card");
- let cardsArray = [...document.querySelectorAll("li.card")];
- let list = [...document.getElementsByClassName("deck")][0];
+ let cards = document.querySelectorAll("li.card");                  //Cards variable, holds the list of all the cards
+ let cardsArray = [...document.querySelectorAll("li.card")];        //Turned Cards variable created above to array for 
+ let list = [...document.getElementsByClassName("deck")][0];        //Cards variable, holds the list of all the cards
  const stars = document.querySelectorAll("ul.stars>li>i");
  const restartBtn = document.querySelector(".restart");
  const playAgain = document.querySelector(".repeat");
