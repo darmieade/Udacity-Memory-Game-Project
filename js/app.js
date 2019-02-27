@@ -1,9 +1,12 @@
 //Reshuffles game when window loads
 window.onload = resetGame;
 
+//Declares and initializes Card/Deck variables
  let cards = document.querySelectorAll("li.card");                  //Cards variable, holds the list of all the cards
  let cardsArray = [...document.querySelectorAll("li.card")];        //Turned Cards variable created above to array for 
  let list = [...document.getElementsByClassName("deck")][0];        //Cards variable, holds the list of all the cards
+
+ //Declares and initializes Score Panel & ScoreBoard/Modal variables
  const stars = document.querySelectorAll("ul.stars>li>i");
  const restartBtn = document.querySelector(".restart");
  const playAgain = document.querySelector(".repeat");
