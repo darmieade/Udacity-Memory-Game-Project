@@ -29,9 +29,11 @@ window.onload = resetGame;
  let endTime = "";
  let collectLastRating = "";
 
- //Create Timer
- let ms = 0, s = 0, m = 0, h = 0, t;
+//Create Timer
+//Declares and initializes variables Seconds(s), Minuites(m), Hour (h) and SetTimeout assignment (t)
+let s = 0, m = 0, h = 0, t;
 
+//Function to calculate Seconds(s), Minuites(m), Hour (h) 
 function countTimer() {
          s++;
         if (s >= 60) {
@@ -46,30 +48,35 @@ function countTimer() {
     endTime = displayTimer.innerHTML;
     timer();
 }
+// Function to call the Settimeout Method & stopTimer function below
 function timer() {
     t = setTimeout(countTimer, 999);
     stopTimer();
 }
 
+// Function to clear time out and stop the timer
 function stopTimer() {
     if (countMatched === 8) {
         clearTimeout(t);
     }
 }
 
-//This function flips the card when clicked, by virtue of the click event listener
+//This function reveals the card when clicked, by virtue of the click event listener
 function openShowCard(){
+    //Starts Timer once 1st card is clicked
     if(beginTimer === 0){
         timer();
         beginTimer++;
     }
-
+    //Locks the deck during matching
     if(lockboard) return;
     if(this === firstCard)return;
     
+    //Adds clas list to Open and reveal the card clicked
     this.classList.add('open');
     this.classList.add('show');
 
+    //Determines Logic to assign 1st and 2nd clicked cards to a variable then call Match function created below
     if(!flippedCard){
         firstCard = this;
         flippedCard = true;
@@ -80,6 +87,7 @@ function openShowCard(){
     }
 }
 
+//Determines Logic to Match revealed card
 function matchCards() {
     if (secondCard.firstElementChild.classList.value === firstCard.firstElementChild.classList.value) {
         matchClass();
@@ -100,6 +108,7 @@ function matchCards() {
         endGame();
     }
 
+    //Removes the Open & Show Class to hide unmatched cards
     function removeShowOpen() {
         lockboard = true;
         setTimeout(() => {
@@ -114,11 +123,13 @@ function matchCards() {
         }, 700);
     }
 
+    //This function counts the number of moves made based on how many times two cards are revealed and call setRating function
     function countMoves() {
         countPlay = (countMatched+countUnmatched);
         moves.innerHTML = countPlay;
         setRating();
 
+        //This function uses logic to decrement the number of start depending on the number of moves made
         function setRating() {
             if (countPlay === 16) {
                 stars[2].classList.toggle('hide');
@@ -130,6 +141,7 @@ function matchCards() {
          }
     }
 
+    //This function resets all the varibles associated with openShowCard function above
     function resetNums() {
         flippedCard = false;
         firstCard = "";
@@ -137,9 +149,9 @@ function matchCards() {
         lockboard = false;
     }
 }
-cards.forEach(card => card.addEventListener('click', openShowCard));
+cards.forEach(card => card.addEventListener('click', openShowCard));        //Event Listenser for the openShowCard
 
-// Shuffle function from http://stackoverflow.com/a/2450976
+// Shuffle function from http://stackoverflow.com/a/2450976 - helps to reshuffle cards
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -154,6 +166,7 @@ function shuffle(array) {
     return array;
 }
 
+//This function resets the whole game and prepares it for a new game
 function resetGame() {
     for (let i = 0; i < 3; i++) {
         stars[i].classList.remove('hide');
@@ -190,8 +203,9 @@ function resetGame() {
             list.appendChild(value);
         }
     }
-restartBtn.addEventListener('click',resetGame);
+restartBtn.addEventListener('click',resetGame);     //This event listerner is called everytime the reset button is clicked
 
+//This function uses logic to determine when all card matches would be completed then displays modal and score card
 function endGame() {
     if (countMatched === 8) {
         showModal.classList.remove('hide');
@@ -200,8 +214,9 @@ function endGame() {
     }
 }
 
+//This function is used to call the resetgame function when the "Play Agin" button is clicked
 function endGamerepeat(){
     resetGame();
     showModal.classList.add('hide');
 }
-playAgain.addEventListener('click',endGamerepeat);
+playAgain.addEventListener('click',endGamerepeat);     //This event listerner is called everytime the "Play Agin" button is clicked
