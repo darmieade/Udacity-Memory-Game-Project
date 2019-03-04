@@ -1,9 +1,13 @@
 # Memory Game Project
 
 ## Table of Contents
+* Link to Play the Game
 * How The Game Works
 * Game Functionality
 * Steps to Creating the Game
+
+## Link to Play the Game
+Please Click [here](https://udacity-memory-game-project--darmieade.repl.co/) to play the game. The game is responsive and can be viewed and played on any device.
 
 ## How the Game Works
 The game board consists of sixteen "cards" arranged in a grid. The deck is made up of eight different pairs of cards, unlike other memory games each card is only made up of one side which is revealed when it is clicked and is hidden when a match is not found. The gameplay rules are very simple:
